@@ -13,9 +13,39 @@
 <body>
   <div class="container h-100">
     <div class="row justify-content-center h-100">
-      <div class="col-10 d-flex justify-content-center mt-3 mb-3 bg-light" >
-        <div class="start my-5 bg-info">
-          <button class="btn btn-lg btn-danger d-flex align-items-center">Start</button>
+      <div class="col-11 d-flex justify-content-center mt-3 mb-3 bg-light" >
+        <div id="start-screen" class="my-5">
+          <h3 class="text-center">NoteQuest - versão Web</h3>
+          <hr/>
+          <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Distinctio quas cupiditate vitae iusto commodi totam, quis et
+            perspiciatis illo soluta fuga earum odio.
+            Accusamus velit fuga vero numquam cumque perferendis.</p>
+            <button class="btn btn-lg btn-danger btn-block mt-5" onclick="start()">Start</button>
+        </div>
+        <div id="loading-screen" class="my-5 d-none">
+          <img src="./img/loading_dice.gif" alt="" class="img-fluid">
+          <p class="text-center">Loading...</p>
+        </div>
+        <div id="game-screen" class="my-3 d-none">
+          <div class="input-group mb-1"> <!-- Nome do personagem Input -->
+            <div class="input-group-prepend">
+              <span class="input-group-text">Nome</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-1"> <!-- Raça do personagem -->
+            <div class="input-group-prepend">
+              <span class="input-group-text">Raça</span>
+            </div>
+            <p class="form-control" id="ficha-raca-personagem">Raça do personagem</p>
+          </div>
+          <div class="input-group mb-1"> <!-- Classe do personagem -->
+            <div class="input-group-prepend">
+              <span class="input-group-text">Classe</span>
+            </div>
+            <p class="form-control" id="ficha-classe-personagem">Classe do personagem</p>
+          </div>
         </div>
       </div>
     </div>

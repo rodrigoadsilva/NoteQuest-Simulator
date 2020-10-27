@@ -1,56 +1,56 @@
 let racas = [
     {
-        raca: 'Homem-Gosma',
+        nome: 'Homem-Gosma',
         pontosVida: 10,
         vantagem: 'Se devorar o corpo de um inimigo recupera todos os PV.'
     },
     {
-        raca: 'Vagalóide',
+        nome: 'Vagalóide',
         pontosVida: 16,
         vantagem: 'Pode usar sua própria luz em vez de tocha, mas gasta 2 PV para cada uso.'
     },
     {
-        raca: 'Fada',
+        nome: 'Fada',
         pontosVida: 8,
         vantagem: 'Começa o jogo com 4 Magias Básicas e 2 tesouros aleatórios.'
     },
     {
-        raca: 'Gnomo',
+        nome: 'Gnomo',
         pontosVida: 14,
         vantagem: 'Começa o jogo com 3 Magias Básicas.'
     },
     {
-        raca: 'Elfo',
+        nome: 'Elfo',
         pontosVida: 17,
         vantagem: 'Começa o jogo com 1 Magia Básica.'
     },
     {
-        raca: 'Humano',
+        nome: 'Humano',
         pontosVida: 20,
         vantagem: ''
     },
     {
-        raca: 'Anão',
+        nome: 'Anão',
         pontosVida: 18,
         vantagem: 'Quando for rolar para Achar Passagens Secretas , role dois dados e descarte o menor.'
     },
     {
-        raca: 'Pequenino',
+        nome: 'Pequenino',
         pontosVida: 14,
         vantagem: 'Não precisa rolar dado quando Mover em Silêncio . Monstro não te notam (exceto o Chefe!).'
     },
     {
-        raca: 'Povo-Gato',
+        nome: 'Povo-Gato',
         pontosVida: 19,
         vantagem: 'Pode vender equipamento na cidade pelo dobro do valor.'
     },
     {
-        raca: 'Rinoceróide',
+        nome: 'Rinoceróide',
         pontosVida: 24,
         vantagem: 'Pode atacar com seu chifre (Dano 1d6).'
     },
     {
-        raca: 'Meio-Dragão',
+        nome: 'Meio-Dragão',
         pontosVida: 30,
         vantagem: 'Começa com 3 Bolas de Fogo.'
     }
@@ -58,77 +58,77 @@ let racas = [
 
 let classes = [
     {
-        classe: 'Mendigo',
+        nome: 'Mendigo',
         pontosVida: 4,
         vantagem: 'Nenhuma.',
         armaInicial: 'Pedaço de Pau',
         danoArmaInicial: '1d6-2'
     },
     {
-        classe: 'Coveiro',
+        nome: 'Coveiro',
         pontosVida: 2,
         vantagem: 'Causa +2 de dano em Mortos-Vivos.',
         armaInicial: 'Pá',
         danoArmaInicial: '1d6-1'
     },
     {
-        classe: 'Nobre',
+        nome: 'Nobre',
         pontosVida: 0,
         vantagem: 'Começa o jogo com 1 Magia Básica.',
         armaInicial: 'Rapieira',
         danoArmaInicial: '1d6+1'
     },
     {
-        classe: 'Estudante',
+        nome: 'Estudante',
         pontosVida: 0,
         vantagem: 'Começa o jogo com 3 Magias Básicas.',
         armaInicial: 'Adaga',
         danoArmaInicial: '1d6-1'
     },
     {
-        classe: 'Ferreiro',
+        nome: 'Ferreiro',
         pontosVida: 4,
         vantagem: 'Pode recuperar armaduras gastando 1 Tocha.',
         armaInicial: 'Martelo',
         danoArmaInicial: '1d6'
     },
     {
-        classe: 'Guarda',
+        nome: 'Guarda',
         pontosVida: 4,
         vantagem: 'Nenhuma.',
         armaInicial: 'Espada Curta',
         danoArmaInicial: '1d6'
     },
     {
-        classe: 'Cozinheiro',
+        nome: 'Cozinheiro',
         pontosVida: 2,
         vantagem: 'Ganha 1 Provisão por monstro (que não seja morto-vivo).',
         armaInicial: 'Cutelo',
         danoArmaInicial: '1d6'
     },
     {
-        classe: 'Chaveiro',
+        nome: 'Chaveiro',
         pontosVida: 2,
         vantagem: 'Não gasta tochas quando Abrir Fechaduras.',
         armaInicial: 'Adaga',
         danoArmaInicial: '1d6-1'
     },
     {
-        classe: 'Lenhador',
+        nome: 'Lenhador',
         pontosVida: 4,
         vantagem: 'Nenhuma.',
         armaInicial: 'Machado de Lenhador',
         danoArmaInicial: '1d6'
     },
     {
-        classe: 'Minerador',
+        nome: 'Minerador',
         pontosVida: 4,
         vantagem: 'Se acabar as tochas, pode mover 3 salas vazias.',
         armaInicial: 'Cutelo',
         danoArmaInicial: '1d6'
     },
     {
-        classe: 'Gladiador',
+        nome: 'Gladiador',
         pontosVida: 6,
         vantagem: 'Nenhuma',
         armaInicial: 'Espada Curta',
@@ -168,7 +168,22 @@ function criarPersonagem(dadoRaca, dadoClasse){
     jogador.totalTochas = 10;
 }
 
+function renderizar(){
+    $('#ficha-raca-personagem').text(jogador.raca.nome)
+    $('#ficha-classe-personagem').text(jogador.classe.nome)
+}
+
+function start(){
+    $('#start-screen').addClass('d-none');
+    $('#loading-screen').removeClass('d-none');
+    setTimeout(() => {
+        criarPersonagem(rolarDados(2,0), rolarDados(2,0));
+        $('#loading-screen').addClass('d-none');
+        $('#game-screen').removeClass('d-none');
+        renderizar();
+    }, 3000);    
+}
+
 $(document).ready(() => {
-    criarPersonagem(rolarDados(2,0), rolarDados(2,0));
 });
 
